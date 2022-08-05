@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="POST">
+    <h3 aligh="center">Employee Performence Review Form</h3>
+    <p aligh="center">1=Poor, 2=Fair, 3=Satisfacory, 4=Good, 5=Excellent</p>
+    <div class = "form-group">
+        <label for="empid">employee ID</label>
+        <input
+                type="text"
+                class="form-control"
+                id="empid"
+                name="empid"
+                placeholder="Enter employee ID"
+        />
+    </div>
+
+    <div class = "form-group">
+        <label for="jobknowledge">Job Knowledge</label>
+        <input
+                type="text"
+                class="form-control"
+                id="jobknowledge"
+                name="jobknowledge"
+                placeholder="Enter value form 1-5 for Job knowledge"
+        />
+    </div>
+
+    <div class = "form-group">
+        <label for="workquality">Work Quality</label>
+        <input
+                type="text"
+                class="form-control"
+                id="workquality"
+                name="workquality"
+                placeholder="Enter value form 1-5 for work quality"
+        />
+    </div>
+
+    <div class = "form-group">
+        <label for="attendence">Attendance/Punctuality</label>
+        <input
+                type="text"
+                class="form-control"
+                id="attendence"
+                name="attendence"
+                placeholder="Enter value form 1-5 for Attendance/Punctuality"
+        />
+    </div>
+
+    <div class = "form-group">
+        <label for="communication">Communication</label>
+        <input
+                type="text"
+                class="form-control"
+                id="communication"
+                name="communication"
+                placeholder="Enter value form 1-5 for communication"
+        />
+    </div>
+
+    <div class = "form-group">
+        <label for="dependability">Dependability</label>
+        <input
+                type="text"
+                class="form-control"
+                id="dependability"
+                name="dependability"
+                placeholder="Enter value form 1-5 for dependability"
+        />
+    </div>
+
+    <div class = "form-group">
+        <label for="comments">Additional comments</label>
+        <input
+                type="text"
+                class="form-control"
+                id="comments"
+                name="comments"
+                placeholder="Eneter any additional comments"
+        />
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

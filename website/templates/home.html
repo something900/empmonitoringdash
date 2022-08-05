@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h1> Individual Performence Overview </h1>
+<br />
+<h3> Select emp ID </h3>
+
+
+<form method="POST"  action="/">
+<select class="form-select" id="empID" name="empID" >
+    {% for c in emp_id_list %}
+        <OPTION value={{c}}>{{c}}</option>
+    {% endfor %}
+</select>
+<!--    <input type="submit" value="GO">-->
+    <br/>
+    <button type="submit" class="btn btn-secondary btn-sm">GO</button>
+</form>
+
+<!--<img src="/plot.png" >-->
+{% endblock %}
+
+
+{% block javascript %}
+	<script>
+
+  // load the objects like you would with a normal jinja template i.e. {{ object }}, but add | tojson
+  // pass it into the parse function
+	labels = JSON.parse({{ labels | tojson }})
+	data_SOP = JSON.parse({{ data_SOP | tojson }})
+	data_Hrworked = JSON.parse({{ data_Hrworked | tojson }})
+	data = JSON.parse({{ data | tojson }})
+	new Chart(document.getElementById("line-chart"),
+	{   "type":"line",
+		"data":
+			{
+                "labels":labels,
+                "datasets":[
+                {"label":"Total packed over time",
+                 //using data here
+                "data":	data,
+                "fill":false,
+                "borderColor":"rgb(75, 192, 192)",
+                "lineTension":0.1},
+
+                {"label":"SOP error",
+                    //using data here
+                "data":	data_SOP,
+                "fill":false,
+                "borderColor":"rgb(75, 34, 192)",
+                "lineTension":0.1},
+
+                {"label":"Hours worked",
+                    //using data here
+                "data":	data_Hrworked,
+                "fill":false,
+                "borderColor":"rgb(139, 0, 139)",
+                "lineTension":0.1},
+
+                ]
+			},
+		"options":{}}
+
+		);
+    </script>
+{% endblock %}
+
+
+
+{% block evalformDAT %}
+	<script>
+
+  // load the objects like you would with a normal jinja template i.e. {{ object }}, but add | tojson
+  // pass it into the parse function
+	labels_evalform = JSON.parse({{ labels_evalform | tojson }})
+	dat_evalform = JSON.parse({{ dat_evalform | tojson }})
+	new Chart(document.getElementById("id_evalformDAT"),{
+		"type":"doughnut",
+		"data":
+			//using the labels here.
+			{"labels":labels_evalform,
+			"datasets":[{"label":"Manager evaluation",
+      			//using data here
+			"data":	dat_evalform,
+			"fill":false,
+			"backgroundColor":[
+			"rgb(2, 62, 138)",
+			"rgb(0, 119, 182)",
+			"rgb(0, 150, 199)",
+			"rgb(0, 180, 216)",
+			"rgb(173, 232, 244)"
+			],
+			"lineTension":0.1}]},
+		"options":{
+            "plugins": {
+                    "legend": {
+                        "position": 'right'
+                    }
+                }
+		}});
+    </script>
+{% endblock %}
+
+
+
+{% block js2 %}
+	<script>
+  // load the objects like you would with a normal jinja template i.e. {{ object }}, but add | tojson
+  // pass it into the parse function
+	labels_SOP = JSON.parse({{ labels_SOP | tojson }})
+	data_SOP = JSON.parse({{ data_SOP | tojson }})
+	new Chart(document.getElementById("line-chart2"),{
+		"type":"bar",
+		"data":
+			//using the labels here.
+			{"labels":labels_SOP,
+			"datasets":[{"label":"SOP not followed",
+      			//using data here
+			"data":	data_SOP,
+			"fill":false,
+			"backgroundColor":"rgb(202, 240, 248)",
+			"lineTension":0.1}]},
+		"options":{}});
+
+    </script>
+
+{% endblock %}
